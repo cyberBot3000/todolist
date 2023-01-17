@@ -1,0 +1,25 @@
+.add-todo {
+	font-size: 22px;
+	margin-top: 20px;
+	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+	padding: 0.5em 1em 1em 1em;
+}
+.add-todo__heading {
+	margin-bottom: 0.7em;
+}
+.add-todo__edit-field {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 10px;
+}
+.add-todo__input {
+	font-size: 1em;
+	flex: 1 1 100%;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0.3em 0.5em;
+}
+.add-todo__submit-btn {
+	font-size: 0.8em;
+	flex: 0 0 auto;
+}
