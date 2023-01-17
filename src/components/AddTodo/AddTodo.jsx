@@ -9,6 +9,9 @@ const AddTodo = ({ addTodo }) => {
 	const newTodoInput = useRef();
 	const submitHandler = e => {
 		e.preventDefault();
+		if(newTodoInput.current.value === ''){
+			return;
+		}
 		addTodo(newTodoInput.current.value);
 		newTodoInput.current.value = "";
 	};
