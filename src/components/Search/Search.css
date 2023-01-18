@@ -1,0 +1,12 @@
+.search{
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    font-size: 18px;
+}
+.search__search-icon{
+    font-size: 1.2em;
+}
+.search__input{
+    font-size: 1em;
+}

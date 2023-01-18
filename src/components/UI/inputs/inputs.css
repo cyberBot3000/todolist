@@ -1,9 +1,14 @@
 .input{
-
-}
-.input_light{
-    outline: none;
-    border: none;
     border-radius: 0;
     background-color: transparent;
+    outline: none;
+    border: none;
+}
+.input_light{
+    border: none;
+}
+.input_underlined{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding: .4em .3em;
 }

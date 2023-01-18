@@ -2,17 +2,27 @@ import { useEffect, useState } from "react";
 import TodoMaker from "../utils/todoMaker";
 
 const useTodos = () => {
-	const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
+	const [todos, setTodos] = useState(
+		JSON.parse(localStorage.getItem("todos")) || []
+	);
 
-    useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos));
-    }, [todos])
+	const [todosList, setTodosList] = useState({
+		todos: [],
+		totalCount: 0,
+		doneCount: 0,
+	});
 
-    const todosList = {
-        todos: todos,
-        totalCount: todos.length,
-        doneCount: todos.filter(elem => elem.done).length,
-    }
+	useEffect(() => {
+		localStorage.setItem("todos", JSON.stringify(todos));
+	}, [todos]);
+	useEffect(() => {
+		setTodosList({
+			todos: todos,
+			totalCount: todos.length,
+			doneCount: todos.filter(elem => elem.done).length,
+		});
+	}, [todos]);
+
 	const todoFabrick = new TodoMaker();
 
 	const addTodo = value => {
@@ -44,6 +54,6 @@ const useTodos = () => {
 			})
 		);
 	};
-    return {todosList, addTodo, removeTodo, setTodoValue, makeDone};
+	return { todosList, addTodo, removeTodo, setTodoValue, makeDone };
 };
 export default useTodos;

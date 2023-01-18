@@ -7,6 +7,7 @@ const TodosList = ({ todosList, removeTodo, setTodoValue, makeDone }) => {
 			{todosList.totalCount ? (
 				todosList.todos.map(elem => (
 					<Todo
+						key={elem.id}
 						todoObj={elem}
 						setTodoValue={setTodoValue}
 						removeTodo={removeTodo}
