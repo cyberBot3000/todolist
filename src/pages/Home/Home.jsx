@@ -1,22 +1,28 @@
-import React, { useEffect, useRef, useState } from "react";
-import Container from "../../components/layouts/Container/Container";
-import "./Home.css";
-import useTodos from "../../hooks/useTodos";
-import TodosList from "../../components/TodosList/TodosList";
+import React, { useEffect, useRef } from "react";
 import AddTodo from "../../components/AddTodo/AddTodo";
+import Container from "../../components/layouts/Container/Container";
 import Search from "../../components/Search/Search";
+import TodosList from "../../components/TodosList/TodosList";
 import useSelection from "../../hooks/useSelection";
+import useTodos from "../../hooks/useTodos";
+import "./Home.css";
 
 const Home = () => {
 	const { todosList, addTodo, makeDone, removeTodo, setTodoValue } = useTodos();
-	const searchElem = useRef(null);
-	const {resultArr, searchStr, filter} = useSelection(todosList.todos);
-	const searchHandler = () => {
-		searchStr('value', searchElem.current.value);
+	const searchTodoElem = useRef(null);
+	const { resultArr, filter } = useSelection(todosList.todos);
+
+	const search = () => {
+		filter({
+			value: todoVal => {
+				return todoVal
+					.toUpperCase()
+					.includes(searchTodoElem.current.value.toUpperCase());
+			},
+		});
 	};
 	useEffect(() => {
-		searchStr('value', searchElem.current.value);
-		filter({});
+		search();
 	}, [todosList]);
 
 	return (
@@ -28,13 +34,13 @@ const Home = () => {
 						{`${todosList.totalCount} todos, ${todosList.doneCount} done`}
 					</div>
 				</div>
-				<Search
-					className={"home__search"}
-					ref={searchElem}
-					onInput={() => {
-						searchHandler();
-					}}
-				/>
+				<div className="home__todos-select">
+					<Search
+						className={"home__search"}
+						ref={searchTodoElem}
+						onInput={search}
+					/>
+				</div>
 				<TodosList
 					todosList={{ ...todosList, todos: resultArr }}
 					makeDone={makeDone}

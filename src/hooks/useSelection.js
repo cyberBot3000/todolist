@@ -1,10 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import deepIncludes from "../utils/deepIncludes";
+import { useState } from "react";
 
 const useSelection = fromArr => {
 	const [resultArr, setResultArr] = useState(fromArr);
-	const [filteredArr, setFilteredArr] = useState(fromArr);
-	const [searchedArr, setSearchedArr] = useState(fromArr);
 
 	const checkValidProp = (obj, prop) => {
 		if (obj.hasOwnProperty(prop) === false) {
@@ -12,17 +9,8 @@ const useSelection = fromArr => {
 		}
 		return true;
 	};
-
-	const searchStr = (by, valueToSearch) => {
-		setSearchedArr(
-			fromArr.filter(elem => {
-				checkValidProp(elem, by);
-				return elem[by].toString().toUpperCase().includes(valueToSearch.toString().toUpperCase());
-			})
-		);
-	};
 	const filter = queryObj => {
-		setFilteredArr(
+		setResultArr(
 			fromArr.filter(elem => {
 				for (let key in queryObj) {
 					checkValidProp(elem, key);
@@ -32,12 +20,8 @@ const useSelection = fromArr => {
 			})
 		);
 	};
-	useEffect(() => {
-		console.log(searchedArr, filteredArr);
-		setResultArr(filteredArr.filter(elem => deepIncludes(searchedArr, elem)));
-	}, [filteredArr, searchedArr]);
 
-	return { resultArr, searchStr, filter };
+	return { resultArr, filter };
 };
 
 export default useSelection;
