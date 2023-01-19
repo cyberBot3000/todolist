@@ -1,7 +1,22 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const useSelection = fromArr => {
 	const [resultArr, setResultArr] = useState(fromArr);
+	const [allFilters, setAllFilters] = useState({});
+
+	useEffect(() => {
+		setResultArr(
+			fromArr.filter(elem => {
+				let result = true;
+				for (let key in allFilters) {
+					checkValidProp(elem, key);
+					const filterFunc = allFilters[key];
+					result = result && filterFunc(elem[key]);
+				}
+				return result;
+			})
+		);
+	}, [allFilters]);
 
 	const checkValidProp = (obj, prop) => {
 		if (obj.hasOwnProperty(prop) === false) {
@@ -10,15 +25,7 @@ const useSelection = fromArr => {
 		return true;
 	};
 	const filter = queryObj => {
-		setResultArr(
-			fromArr.filter(elem => {
-				for (let key in queryObj) {
-					checkValidProp(elem, key);
-					return queryObj[key](elem[key]);
-				}
-				return true;
-			})
-		);
+		setAllFilters({...allFilters, ...queryObj});
 	};
 
 	return { resultArr, filter };
