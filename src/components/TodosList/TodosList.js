@@ -4,7 +4,7 @@ import "./TodosList.css";
 const TodosList = ({ todosList, removeTodo, setTodoValue, makeDone }) => {
 	return (
 		<div className="todos-list">
-			{todosList.totalCount ? (
+			{todosList.todos.length ? (
 				todosList.todos.map(elem => (
 					<Todo
 						key={elem.id}
@@ -15,7 +15,7 @@ const TodosList = ({ todosList, removeTodo, setTodoValue, makeDone }) => {
 					/>
 				))
 			) : (
-				<h2 className="todos-list__message">you have no todos</h2>
+				<h2 className="todos-list__message">you have no todos in this category</h2>
 			)}
 		</div>
 	);
