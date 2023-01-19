@@ -3,6 +3,9 @@
     outline: none;
     border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button_icon{
@@ -10,7 +13,14 @@
     border-radius: 5px;
     padding: .5em 0em;
     width: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+.button_text{
+    width: fit-content;
+    padding: .7em 1.2em;
+    text-transform: uppercase;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, .1);
+}
+
+.button_rounded{
+    border-radius: 1000px;
 }

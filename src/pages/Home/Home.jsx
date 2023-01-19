@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import AddTodo from "../../components/AddTodo/AddTodo";
+import FiltersTodo from "../../components/FiltersTodo/FiltersTodo";
 import Container from "../../components/layouts/Container/Container";
 import Search from "../../components/Search/Search";
 import TodosList from "../../components/TodosList/TodosList";
@@ -40,6 +41,7 @@ const Home = () => {
 						ref={searchTodoElem}
 						onInput={search}
 					/>
+					<FiltersTodo filter={filter}/>
 				</div>
 				<TodosList
 					todosList={{ ...todosList, todos: resultArr }}

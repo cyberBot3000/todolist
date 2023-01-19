@@ -1,3 +1,9 @@
 .home__search{
     margin-top: .5em;
 }
+.home__todos-select{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
