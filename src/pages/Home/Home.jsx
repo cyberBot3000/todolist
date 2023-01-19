@@ -1,30 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import AddTodo from "../../components/AddTodo/AddTodo";
 import FiltersTodo from "../../components/FiltersTodo/FiltersTodo";
 import Container from "../../components/layouts/Container/Container";
 import Search from "../../components/Search/Search";
 import TodosList from "../../components/TodosList/TodosList";
-import useSelection from "../../hooks/useSelection";
+import useFilter from "../../hooks/useFilter";
 import useTodos from "../../hooks/useTodos";
 import "./Home.css";
 
 const Home = () => {
 	const { todosList, addTodo, makeDone, removeTodo, setTodoValue } = useTodos();
-	const searchTodoElem = useRef(null);
-	const { resultArr, filter } = useSelection(todosList.todos);
-
-	const search = () => {
-		filter({
-			value: todoVal => {
-				return todoVal
-					.toUpperCase()
-					.includes(searchTodoElem.current.value.toUpperCase());
-			},
-		});
-	};
-	useEffect(() => {
-		search();
-	}, [todosList]);
+	const { resultArr, filter } = useFilter(todosList.todos);
 
 	return (
 		<div className="home">
@@ -38,8 +24,8 @@ const Home = () => {
 				<div className="home__todos-select">
 					<Search
 						className={"home__search"}
-						ref={searchTodoElem}
-						onInput={search}
+						inArr={todosList.todos}
+						filterFn={filter}
 					/>
 					<FiltersTodo filter={filter}/>
 				</div>

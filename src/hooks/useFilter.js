@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useSelection = fromArr => {
+const useFilter = fromArr => {
 	const [resultArr, setResultArr] = useState(fromArr);
 	const [allFilters, setAllFilters] = useState({});
 
@@ -31,4 +31,4 @@ const useSelection = fromArr => {
 	return { resultArr, filter };
 };
 
-export default useSelection;
+export default useFilter;
