@@ -1,0 +1,17 @@
+.radio-group{
+
+}
+.radio-group__radio-button{
+    border: 1px solid transparent;
+}
+.radio-group__button:has(input[type="radio"]:checked) .radio-group__radio-button{
+    border: 1px solid lightskyblue;
+}
+.radio-group__radio-input{
+
+}
+.radio-group__radio-input_hidden{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}

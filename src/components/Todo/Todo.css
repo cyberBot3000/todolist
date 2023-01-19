@@ -23,6 +23,7 @@
 }
 .todo__edit-input{
     font-size: 1em;
+    width: 100%;
 }
 .todo__value_done{
     text-decoration: line-through;

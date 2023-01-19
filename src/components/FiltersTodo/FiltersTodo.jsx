@@ -1,68 +1,39 @@
-import React, { useState } from "react";
-import ButtonTextRounded from "../UI/buttons/ButtonTextRounded";
+import React from "react";
+import RadioButtonsGroup from "../UI/radioGroups/RadioButtonsGroup";
 import "./FiltersTodo.css";
 
 const FiltersTodo = ({ filter }) => {
-	const [filtersByDone, setFiltersByDone] = useState([
+	const byDoneBtns = [
 		{
-			name: "all",
-			id: "filterByDone_1",
-			active: true,
-			filterVal: {
-				done: () => {
-					return true;
-				},
+			id: "todo-filters-radio-btn_1",
+			children: 'all',
+			onClick: () => {
+				filter({ done: () => true });
 			},
 		},
 		{
-			name: "active",
-			id: "filterByDone_2",
-			active: false,
-			filterVal: {
-				done: currVal => {
-					return currVal === false;
-				},
+			children: "active",
+			id: "todo-filters-radio-btn_2",
+			onClick: () => {
+				filter({ done: done => !done });
 			},
 		},
 		{
-			name: "done",
-			id: "filterByDone_3",
-			active: false,
-			filterVal: {
-				done: currVal => {
-					return currVal === true;
-				},
+			children: "done",
+			id: "todo-filters-radio-btn_3",
+			onClick: () => {
+				filter({ done: done => done });
 			},
 		},
-	]);
-	const filterByDoneClickHandler = e => {
-		const clickedId = e.target.id;
-		setFiltersByDone(
-			filtersByDone.map(currFilter => {
-				if (currFilter.id !== clickedId) {
-					return { ...currFilter, active: false };
-				}
-				filter(currFilter.filterVal);
-				return { ...currFilter, active: true };
-			})
-		);
-	};
+
+	];
 	return (
 		<div className="todo-filters">
-			{filtersByDone.map(currFilter => {
-				return (
-					<ButtonTextRounded
-						className={`todo-filters__btn${
-							currFilter.active ? " todo-filters__btn_active" : ""
-						}`}
-						id={currFilter.id}
-						onClick={filterByDoneClickHandler}
-						key={currFilter.id}
-					>
-						{currFilter.name}
-					</ButtonTextRounded>
-				);
-			})}
+			<RadioButtonsGroup
+				className="todo-filters__radio-group"
+				name="filter-todo-by-done"
+				buttonsPropsArr={byDoneBtns}
+			/>
 		</div>
 	);
 };

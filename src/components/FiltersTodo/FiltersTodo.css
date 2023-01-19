@@ -1,15 +1,7 @@
-.todo-filters{
+.todo-filters__radio-group{
     display: flex;
     gap: 15px;
     align-items: center;
     justify-content: flex-end;
     font-size: 16px;
-}
-.todo-filters__btn{
-    font-size: 1em;
-    border: 1px solid transparent;
-
-}
-.todo-filters__btn_active{
-    border: 1px solid lightskyblue;
 }

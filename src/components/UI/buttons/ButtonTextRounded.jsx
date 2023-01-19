@@ -3,9 +3,9 @@ import './buttons.css';
 
 const ButtonTextRounded = ({children, className, ...props}) => {
     return (
-        <button className={`button button_text button_rounded ${className}`} {...props}>
+        <div className={`button button_text button_rounded ${className}`} {...props}>
             {children}
-        </button>
+        </div>
     );
 };
 
