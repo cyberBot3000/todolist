@@ -19,6 +19,7 @@ export default class TodoMaker {
         return this.#updateId(this.#lastTodoId+1);
     }
     make(value){
-        return {value: value, done: false, id: this.#getNextId()};
+        const createdAt = Date.now();
+        return {value: value, done: false, id: this.#getNextId(), createdAt: createdAt};
     }
 }

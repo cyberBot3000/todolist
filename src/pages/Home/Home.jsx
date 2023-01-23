@@ -4,6 +4,7 @@ import FiltersTodo from "../../components/FiltersTodo/FiltersTodo";
 import Container from "../../components/layouts/Container/Container";
 import Search from "../../components/Search/Search";
 import TodosList from "../../components/TodosList/TodosList";
+import LifeTime from "../../features/LifeTime";
 import useFilter from "../../hooks/useFilter";
 import useTodos from "../../hooks/useTodos";
 import "./Home.css";

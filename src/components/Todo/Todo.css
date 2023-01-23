@@ -1,30 +1,43 @@
-.todo{
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    align-items: center;
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    padding: .8em .2em;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
+.todo {
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	padding: 0.8em 0.2em;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.todo:last-of-type{
-    border-bottom: none;
+.todo__main {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	align-items: center;
 }
-.todo__actions{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: flex-end;
+.todo:last-of-type {
+	border-bottom: none;
 }
-.todo__action-button{
-    font-size: .8em;
+.todo__actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	justify-content: flex-end;
 }
-.todo__edit-input{
-    font-size: 1em;
-    width: 100%;
+.todo__action-button {
+	font-size: 0.8em;
 }
-.todo__value_done{
-    text-decoration: line-through;
+.todo__edit-input {
+	font-size: 1em;
+	width: 100%;
+}
+.todo__value_done {
+	text-decoration: line-through;
+}
+.todo__footer{
+    font-size: 18px;
+}
+.todo__text{
+
+}
+.todo__text_sub{
+    color: rgba(0, 0, 0, .5);
+    font-size: .7em;
 }
