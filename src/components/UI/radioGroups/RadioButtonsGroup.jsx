@@ -6,7 +6,7 @@ const RadioButtonsGroup = ({ buttonsPropsArr, className, name }) => {
 	return (
 		<div className={`radio-group ${className}`}>
 			{buttonsPropsArr.map(btnProps => (
-				<div className="radio-group__button">
+				<div className="radio-group__button" key={btnProps.id}>
 					<input
 						type="radio"
 						name={name}
