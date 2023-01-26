@@ -27,7 +27,10 @@ export default class TodoMaker {
 	make(value) {
 		const createdAt = Date.now();
 		return {
-			value, done: false, id: this.#getNextId(), createdAt,
+			value,
+			done: false,
+			id: this.#getNextId(),
+			createdAt,
 		};
 	}
 }

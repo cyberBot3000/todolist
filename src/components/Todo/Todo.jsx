@@ -1,74 +1,47 @@
-import {
-	faCheck,
-	faMinus, faPen, faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import LifeTime from '../../features/LifeTime';
-import ButtonIcon from '../UI/buttons/ButtonIcon';
+import useInputEdittor from '../../hooks/useInputEdittor';
+import TodoActions from '../TodoActions/TodoActions';
 import InputTextLight from '../UI/inputs/InputTextLight';
 import './Todo.css';
 
-const Todo = ({
-	todoObj, removeTodo, setTodoValue, makeDone,
-}) => {
-	const [isEditting, setIsEditting] = useState(false);
-	const editElem = useRef();
-	useEffect(() => {
-		if (!editElem.current) {
-			return;
+const Todo = ({ todoObj, removeTodo, setTodoValue, makeDone }) => {
+	const { isEditting, editElemRef, editBtnClickHandler } = useInputEdittor(
+		todoObj.value,
+		() => {
+			setTodoValue(todoObj.id, editElemRef.current.value);
 		}
-		editElem.current.focus();
-		editElem.current.value = todoObj.value;
-	}, [isEditting]);
+	);
 
 	return (
-		<div className="todo">
-			<main className="todo__main">
+		<div className='todo'>
+			<main className='todo__main'>
 				{isEditting ? (
-					<InputTextLight ref={editElem} className="todo__edit-input" />
+					<InputTextLight
+						ref={editElemRef}
+						className='todo__edit-input'
+					/>
 				) : (
 					<div
-						className={`todo__value${todoObj.done ? ' todo__value_done' : ''}`}
+						className={`todo__value${
+							todoObj.done ? ' todo__value_done' : ''
+						}`}
 					>
 						{todoObj.value}
 					</div>
 				)}
-				<div className="todo__actions">
-					<ButtonIcon
-						className="todo__action-button"
-						color="red"
-						onClick={() => {
-							removeTodo(todoObj.id);
-						}}
-					>
-						<FontAwesomeIcon icon={faTrashAlt} />
-					</ButtonIcon>
-					<ButtonIcon
-						className="todo__action-button"
-						color="green"
-						onClick={() => {
-							if (isEditting) {
-								setTodoValue(todoObj.id, editElem.current.value);
-							}
-							setIsEditting(!isEditting);
-						}}
-					>
-						<FontAwesomeIcon icon={isEditting ? faCheck : faPen} />
-					</ButtonIcon>
-					<ButtonIcon
-						className="todo__action-button"
-						color="purple"
-						onClick={() => {
-							makeDone(todoObj.id);
-						}}
-					>
-						<FontAwesomeIcon icon={faMinus} />
-					</ButtonIcon>
-				</div>
+				<TodoActions
+					isEditting={isEditting}
+					editBtnClickHandler={editBtnClickHandler}
+					makeDone={makeDone}
+					removeTodo={removeTodo}
+				/>
 			</main>
-			<footer className="todo__footer">
-				<LifeTime className="todo__text todo__text_sub" createdAt={todoObj.createdAt} />
+			<footer className='todo__footer'>
+				<LifeTime
+					className='todo__text todo__text_sub'
+					createdAt={todoObj.createdAt}
+				/>
 			</footer>
 		</div>
 	);

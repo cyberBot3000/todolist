@@ -1,12 +1,11 @@
 const locales = {
-	simple: {
-	},
-	plurals: {
-	},
+	simple: {},
+	plurals: {},
 };
 
 const getSimpleLocales = (key, locale = 'ru') => locales.simple[key][locale];
-const getPluralLocales = (key, type, locale = 'ru') => locales.plurals[key][locale][type];
+const getPluralLocales = (key, type, locale = 'ru') =>
+	locales.plurals[key][locale][type];
 
 const addLocale = (localeName, type, valuesObj) => {
 	Object.keys(valuesObj).forEach((key) => {

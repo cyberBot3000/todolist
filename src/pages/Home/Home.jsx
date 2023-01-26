@@ -9,23 +9,22 @@ import useTodos from '../../hooks/useTodos';
 import './Home.css';
 
 const Home = () => {
-	const {
-		todosList, addTodo, makeDone, removeTodo, setTodoValue,
-	} = useTodos();
+	const { todosList, addTodo, makeDone, removeTodo, setTodoValue } =
+		useTodos();
 	const { resultArr, filter } = useFilter(todosList.todos);
 
 	return (
-		<div className="home">
+		<div className='home'>
 			<Container>
-				<div className="home__heading">
+				<div className='home__heading'>
 					<h1>Todo List</h1>
-					<div className="home__general-info">
+					<div className='home__general-info'>
 						{`${todosList.totalCount} todos, ${todosList.doneCount} done`}
 					</div>
 				</div>
-				<div className="home__todos-select">
+				<div className='home__todos-select'>
 					<Search
-						className="home__search"
+						className='home__search'
 						filterFn={filter}
 						inArr={todosList.todos}
 					/>

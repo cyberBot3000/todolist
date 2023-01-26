@@ -61,5 +61,4 @@ addLocale('ru', 'plurals', {
 		many: 'лет',
 		other: 'лет',
 	},
-
 });

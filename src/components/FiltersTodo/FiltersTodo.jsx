@@ -25,14 +25,13 @@ const FiltersTodo = ({ filter }) => {
 				filter({ done: (done) => done });
 			},
 		},
-
 	];
 	return (
-		<div className="todo-filters">
+		<div className='todo-filters'>
 			<RadioButtonsGroup
 				buttonsPropsArr={byDoneBtns}
-				className="todo-filters__radio-group"
-				name="filter-todo-by-done"
+				className='todo-filters__radio-group'
+				name='filter-todo-by-done'
 			/>
 		</div>
 	);

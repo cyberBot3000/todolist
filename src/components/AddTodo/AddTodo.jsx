@@ -16,11 +16,18 @@ const AddTodo = ({ addTodo }) => {
 		newTodoInput.current.value = '';
 	};
 	return (
-		<form className="add-todo" onSubmit={submitHandler}>
-			<h3 className="add-todo__heading">new todo:</h3>
-			<div className="add-todo__edit-field">
-				<InputTextLight ref={newTodoInput} className="add-todo__input" />
-				<ButtonIcon type="submit" className="add-todo__submit-btn" color="blue">
+		<form className='add-todo' onSubmit={submitHandler}>
+			<h3 className='add-todo__heading'>new todo:</h3>
+			<div className='add-todo__edit-field'>
+				<InputTextLight
+					ref={newTodoInput}
+					className='add-todo__input'
+				/>
+				<ButtonIcon
+					type='submit'
+					className='add-todo__submit-btn'
+					color='blue'
+				>
 					<FontAwesomeIcon icon={faCaretUp} />
 				</ButtonIcon>
 			</div>

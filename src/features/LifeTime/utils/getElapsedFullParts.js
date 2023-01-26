@@ -1,7 +1,5 @@
 import monthsArrFrom from './monthsArrFrom';
-import {
-	toDays, toHours, toMinutes, toSeconds,
-} from './timeConvertion';
+import { toDays, toHours, toMinutes, toSeconds } from './timeConvertion';
 
 const getElapsedFullParts = (startFrom, milliseconds) => {
 	let totalDays = toDays(milliseconds);
@@ -39,8 +37,12 @@ const getElapsedFullParts = (startFrom, milliseconds) => {
 		years: fullYears,
 		months: fullMonths - fullYears * 12,
 		days: daysLeft,
-		hours: toHours(milliseconds - toDays(milliseconds) * 24 * 60 * 60 * 1000),
-		minutes: toMinutes(milliseconds - toHours(milliseconds) * 60 * 60 * 1000),
+		hours: toHours(
+			milliseconds - toDays(milliseconds) * 24 * 60 * 60 * 1000
+		),
+		minutes: toMinutes(
+			milliseconds - toHours(milliseconds) * 60 * 60 * 1000
+		),
 		seconds: toSeconds(milliseconds - toMinutes(milliseconds) * 60 * 1000),
 		milliseconds: milliseconds - toSeconds(milliseconds) * 1000,
 	};

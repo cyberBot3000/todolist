@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "prettier"
     ],
     "overrides": [],
     "parserOptions": {
@@ -13,14 +14,15 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
+        "prettier/prettier": ["error", { "endOfLine":"auto" }],
+        "arrow-parens": "off",
         "no-console": "error",
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "comma-dangle": "off",
+        "indent": "off",
         "linebreak-style": [
             "error",
             "windows"

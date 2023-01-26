@@ -3,7 +3,7 @@ import TodoMaker from '../utils/todoMaker';
 
 const useTodos = () => {
 	const [todos, setTodos] = useState(
-		JSON.parse(localStorage.getItem('todos')) || [],
+		JSON.parse(localStorage.getItem('todos')) || []
 	);
 
 	const [todosList, setTodosList] = useState({
@@ -40,7 +40,7 @@ const useTodos = () => {
 					return elem;
 				}
 				return { ...elem, value };
-			}),
+			})
 		);
 	};
 
@@ -51,11 +51,15 @@ const useTodos = () => {
 					return elem;
 				}
 				return { ...elem, done: true };
-			}),
+			})
 		);
 	};
 	return {
-		todosList, addTodo, removeTodo, setTodoValue, makeDone,
+		todosList,
+		addTodo,
+		removeTodo,
+		setTodoValue,
+		makeDone,
 	};
 };
 export default useTodos;

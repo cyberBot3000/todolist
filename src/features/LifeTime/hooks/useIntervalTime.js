@@ -6,7 +6,7 @@ const useIntervalTime = (startFrom, elapsedMilliseconds) => {
 	useEffect(() => {
 		const elapsedTimeParts = getElapsedFullParts(
 			startFrom,
-			elapsedMilliseconds,
+			elapsedMilliseconds
 		);
 		if (elapsedTimeParts.days) {
 			setIntervalTime(1000 * 60 * 60 * 24);

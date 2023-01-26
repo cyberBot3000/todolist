@@ -21,7 +21,7 @@ const useFilter = (fromArr) => {
 					result = result && filterFunc(elem[key]);
 				});
 				return result;
-			}),
+			})
 		);
 	}, [allFilters]);
 
