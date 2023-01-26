@@ -5,23 +5,17 @@ const locales = {
 	},
 };
 
-const getSimpleLocales = (key, locale = "ru") => {
-	return locales.simple[key][locale];
-};
-const getPluralLocales = (key, type, locale = "ru") => {
-	return locales.plurals[key][locale][type];
-};
-
-
+const getSimpleLocales = (key, locale = 'ru') => locales.simple[key][locale];
+const getPluralLocales = (key, type, locale = 'ru') => locales.plurals[key][locale][type];
 
 const addLocale = (localeName, type, valuesObj) => {
-	for (let key in valuesObj) {
+	Object.keys(valuesObj).forEach((key) => {
 		if (!locales[type][key]) {
 			locales[type][key] = { [localeName]: valuesObj[key] };
-			continue;
+			return;
 		}
 		Object.assign(locales[type][key], { [localeName]: valuesObj[key] });
-	}
+	});
 };
 
 export { getPluralLocales, getSimpleLocales, addLocale };

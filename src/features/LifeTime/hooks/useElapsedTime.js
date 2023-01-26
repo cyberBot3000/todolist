@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import getElapsedFullParts from "../utils/getElapsedFullParts";
-import useIntervalTime from "./useIntervalTime";
+import { useEffect, useState } from 'react';
+import getElapsedFullParts from '../utils/getElapsedFullParts';
+import useIntervalTime from './useIntervalTime';
 
-const useElapsedTime = from => {
+const useElapsedTime = (from) => {
 	const dateDiff = Date.now() - from;
 	const [elapsedMilliseconds, setElapsedMilliseconds] = useState(dateDiff);
 	const [intervalTime] = useIntervalTime(from, elapsedMilliseconds);

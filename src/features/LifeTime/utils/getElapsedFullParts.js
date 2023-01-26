@@ -1,5 +1,7 @@
-import monthsArrFrom from "./monthsArrFrom";
-import { toDays, toHours, toMinutes, toSeconds } from "./timeConvertion";
+import monthsArrFrom from './monthsArrFrom';
+import {
+	toDays, toHours, toMinutes, toSeconds,
+} from './timeConvertion';
 
 const getElapsedFullParts = (startFrom, milliseconds) => {
 	let totalDays = toDays(milliseconds);
@@ -15,19 +17,19 @@ const getElapsedFullParts = (startFrom, milliseconds) => {
 	if (totalDays > daysInMonths[currMonth]) {
 		totalDays -= daysInMonths[currMonth];
 		daysLeft += daysInMonths[currMonth];
-		currMonth++;
+		currMonth += 1;
 	}
 
 	while (totalDays > daysInMonths[currMonth]) {
 		totalDays -= daysInMonths[currMonth];
-		currMonth++;
-		fullMonths++;
-		if (currMonth == 12) {
-			currYear++;
+		currMonth += 1;
+		fullMonths += 1;
+		if (currMonth === 12) {
+			currYear += 1;
 			daysInMonths = monthsArrFrom(currYear);
 			currMonth = 0;
 			if (fullMonths >= 12) {
-				fullYears++;
+				fullYears += 1;
 			}
 		}
 	}

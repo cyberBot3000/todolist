@@ -1,19 +1,19 @@
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef } from "react";
-import ButtonIcon from "../UI/buttons/ButtonIcon";
-import InputTextLight from "../UI/inputs/InputTextLight";
-import "./AddTodo.css";
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useRef } from 'react';
+import ButtonIcon from '../UI/buttons/ButtonIcon';
+import InputTextLight from '../UI/inputs/InputTextLight';
+import './AddTodo.css';
 
 const AddTodo = ({ addTodo }) => {
 	const newTodoInput = useRef();
-	const submitHandler = e => {
+	const submitHandler = (e) => {
 		e.preventDefault();
-		if(newTodoInput.current.value === ''){
+		if (newTodoInput.current.value === '') {
 			return;
 		}
 		addTodo(newTodoInput.current.value);
-		newTodoInput.current.value = "";
+		newTodoInput.current.value = '';
 	};
 	return (
 		<form className="add-todo" onSubmit={submitHandler}>

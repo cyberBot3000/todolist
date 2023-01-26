@@ -1,28 +1,28 @@
-import React from "react";
-import RadioButtonsGroup from "../UI/radioGroups/RadioButtonsGroup";
-import "./FiltersTodo.css";
+import React from 'react';
+import RadioButtonsGroup from '../UI/radioGroups/RadioButtonsGroup';
+import './FiltersTodo.css';
 
 const FiltersTodo = ({ filter }) => {
 	const byDoneBtns = [
 		{
-			id: "todo-filters-radio-btn_1",
+			id: 'todo-filters-radio-btn_1',
 			children: 'all',
 			onClick: () => {
 				filter({ done: () => true });
 			},
 		},
 		{
-			children: "active",
-			id: "todo-filters-radio-btn_2",
+			children: 'active',
+			id: 'todo-filters-radio-btn_2',
 			onClick: () => {
-				filter({ done: done => !done });
+				filter({ done: (done) => !done });
 			},
 		},
 		{
-			children: "done",
-			id: "todo-filters-radio-btn_3",
+			children: 'done',
+			id: 'todo-filters-radio-btn_3',
 			onClick: () => {
-				filter({ done: done => done });
+				filter({ done: (done) => done });
 			},
 		},
 
@@ -30,9 +30,9 @@ const FiltersTodo = ({ filter }) => {
 	return (
 		<div className="todo-filters">
 			<RadioButtonsGroup
+				buttonsPropsArr={byDoneBtns}
 				className="todo-filters__radio-group"
 				name="filter-todo-by-done"
-				buttonsPropsArr={byDoneBtns}
 			/>
 		</div>
 	);

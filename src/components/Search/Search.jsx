@@ -5,20 +5,28 @@ import useSearch from '../../hooks/useSearch';
 import InputTextUnderlined from '../UI/inputs/InputTextUnderlined';
 import './Search.css';
 
-const Search = ({className, filterFn, inArr, ...props}) => {
-    const [inputVal, setInputVal] = useState('');
-    const search = useSearch(filterFn);
+const Search = ({
+	className, filterFn, inArr,
+}) => {
+	const [inputVal, setInputVal] = useState('');
+	const search = useSearch(filterFn);
 	useEffect(() => {
 		search('value', inputVal);
 	}, [inArr, inputVal]);
-    return (
-        <div className={`search ${className}`}>
-            <div className="search__search-icon">
-                <FontAwesomeIcon icon={faSearch}/>
-            </div>
-            <InputTextUnderlined placeholder='Поиск' outlineColor={'rbga(0, 0, 0, .5)'} value={inputVal} onInput={(e) => {setInputVal(e.target.value)}} className='search__input' {...props}/>
-        </div>
-    );
-}
+	return (
+		<div className={`search ${className}`}>
+			<div className="search__search-icon">
+				<FontAwesomeIcon icon={faSearch} />
+			</div>
+			<InputTextUnderlined
+				className="search__input"
+				onInput={(e) => { setInputVal(e.target.value); }}
+				outlineColor="rbga(0, 0, 0, .5)"
+				placeholder="Поиск"
+				value={inputVal}
+			/>
+		</div>
+	);
+};
 
 export default Search;

@@ -1,15 +1,17 @@
 import {
 	faCheck,
-	faMinus, faPen, faTrashAlt
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
-import LifeTime from "../../features/LifeTime";
-import ButtonIcon from "../UI/buttons/ButtonIcon";
-import InputTextLight from "../UI/inputs/InputTextLight";
-import "./Todo.css";
+	faMinus, faPen, faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useRef, useState } from 'react';
+import LifeTime from '../../features/LifeTime';
+import ButtonIcon from '../UI/buttons/ButtonIcon';
+import InputTextLight from '../UI/inputs/InputTextLight';
+import './Todo.css';
 
-const Todo = ({ todoObj, removeTodo, setTodoValue, makeDone }) => {
+const Todo = ({
+	todoObj, removeTodo, setTodoValue, makeDone,
+}) => {
 	const [isEditting, setIsEditting] = useState(false);
 	const editElem = useRef();
 	useEffect(() => {
@@ -24,10 +26,10 @@ const Todo = ({ todoObj, removeTodo, setTodoValue, makeDone }) => {
 		<div className="todo">
 			<main className="todo__main">
 				{isEditting ? (
-					<InputTextLight className="todo__edit-input" ref={editElem} />
+					<InputTextLight ref={editElem} className="todo__edit-input" />
 				) : (
 					<div
-						className={`todo__value${todoObj.done ? " todo__value_done" : ""}`}
+						className={`todo__value${todoObj.done ? ' todo__value_done' : ''}`}
 					>
 						{todoObj.value}
 					</div>
@@ -66,7 +68,7 @@ const Todo = ({ todoObj, removeTodo, setTodoValue, makeDone }) => {
 				</div>
 			</main>
 			<footer className="todo__footer">
-				<LifeTime createdAt={todoObj.createdAt} className='todo__text todo__text_sub'/>
+				<LifeTime className="todo__text todo__text_sub" createdAt={todoObj.createdAt} />
 			</footer>
 		</div>
 	);

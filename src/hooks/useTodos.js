@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import TodoMaker from "../utils/todoMaker";
+import { useEffect, useState } from 'react';
+import TodoMaker from '../utils/todoMaker';
 
 const useTodos = () => {
 	const [todos, setTodos] = useState(
-		JSON.parse(localStorage.getItem("todos")) || []
+		JSON.parse(localStorage.getItem('todos')) || [],
 	);
 
 	const [todosList, setTodosList] = useState({
@@ -13,47 +13,49 @@ const useTodos = () => {
 	});
 
 	useEffect(() => {
-		localStorage.setItem("todos", JSON.stringify(todos));
+		localStorage.setItem('todos', JSON.stringify(todos));
 	}, [todos]);
 	useEffect(() => {
 		setTodosList({
-			todos: todos,
+			todos,
 			totalCount: todos.length,
-			doneCount: todos.filter(elem => elem.done).length,
+			doneCount: todos.filter((elem) => elem.done).length,
 		});
 	}, [todos]);
 
 	const todoFabrick = new TodoMaker();
 
-	const addTodo = value => {
+	const addTodo = (value) => {
 		setTodos([...todos, todoFabrick.make(value)]);
 	};
 
-	const removeTodo = id => {
-		setTodos(todos.filter(elem => elem.id !== id));
+	const removeTodo = (id) => {
+		setTodos(todos.filter((elem) => elem.id !== id));
 	};
 
 	const setTodoValue = (id, value) => {
 		setTodos(
-			todos.map(elem => {
+			todos.map((elem) => {
 				if (elem.id !== id) {
 					return elem;
 				}
-				return { ...elem, value: value };
-			})
+				return { ...elem, value };
+			}),
 		);
 	};
 
-	const makeDone = id => {
+	const makeDone = (id) => {
 		setTodos(
-			todos.map(elem => {
+			todos.map((elem) => {
 				if (elem.id !== id) {
 					return elem;
 				}
 				return { ...elem, done: true };
-			})
+			}),
 		);
 	};
-	return { todosList, addTodo, removeTodo, setTodoValue, makeDone };
+	return {
+		todosList, addTodo, removeTodo, setTodoValue, makeDone,
+	};
 };
 export default useTodos;
