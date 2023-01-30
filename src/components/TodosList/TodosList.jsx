@@ -2,13 +2,13 @@ import React from 'react';
 import Todo from '../Todo/Todo';
 import './TodosList.css';
 
-const TodosList = ({ todosList, removeTodo, setTodoValue, makeDone }) => (
+const TodosList = ({ todosList, removeTodo, setTodoValue, toggleDone }) => (
 	<div className='todos-list'>
 		{todosList.todos.length ? (
 			todosList.todos.map((elem) => (
 				<Todo
 					key={elem.id}
-					makeDone={makeDone}
+					toggleDone={toggleDone}
 					removeTodo={removeTodo}
 					setTodoValue={setTodoValue}
 					todoObj={elem}

@@ -13,6 +13,7 @@ const FiltersTodo = ({ filter }) => {
 			onClick: () => {
 				filter({ done: () => true });
 			},
+			checked: true,
 		},
 		{
 			children: getSimpleLocales('filter_button_active', language),
@@ -20,6 +21,7 @@ const FiltersTodo = ({ filter }) => {
 			onClick: () => {
 				filter({ done: (done) => !done });
 			},
+			checked: false,
 		},
 		{
 			children: getSimpleLocales('filter_button_done', language),
@@ -27,6 +29,7 @@ const FiltersTodo = ({ filter }) => {
 			onClick: () => {
 				filter({ done: (done) => done });
 			},
+			checked: false,
 		},
 	];
 	return (

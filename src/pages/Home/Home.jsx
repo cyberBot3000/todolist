@@ -11,16 +11,23 @@ import { getPluralLocales, getSimpleLocales } from '../../lib/locales';
 import './Home.css';
 
 const Home = () => {
-	const { todosList, addTodo, makeDone, removeTodo, setTodoValue } =
+	const { todosList, addTodo, removeTodo, setTodoValue, toggleDone } =
 		useTodos();
 	const { resultArr, filter } = useFilter(todosList.todos);
 	const { language } = useContext(Context);
 	return (
 		<div className='home'>
 			<Container>
-				<div className='home__heading'>
-					<h1>{getSimpleLocales('label', language)}</h1>
-					<div className='home__general-info'>
+				<header className='home__header'>
+					<div className='home__todos-select'>
+						<Search
+							className='home__search'
+							filterFn={filter}
+							inArr={todosList.todos}
+						/>
+						<FiltersTodo filter={filter} />
+					</div>
+					<div className='home__sub-heading'>
 						{`${todosList.totalCount} ${getPluralLocales(
 							'todo',
 							todosList.totalCount,
@@ -30,17 +37,10 @@ const Home = () => {
 							language
 						)}`}
 					</div>
-				</div>
-				<div className='home__todos-select'>
-					<Search
-						className='home__search'
-						filterFn={filter}
-						inArr={todosList.todos}
-					/>
-					<FiltersTodo filter={filter} />
-				</div>
+				</header>
+
 				<TodosList
-					makeDone={makeDone}
+					toggleDone={toggleDone}
 					removeTodo={removeTodo}
 					setTodoValue={setTodoValue}
 					todosList={{ ...todosList, todos: resultArr }}

@@ -11,6 +11,7 @@ const RadioButtonsGroup = ({ buttonsPropsArr, className, name }) => (
 					id={btnProps.id}
 					name={name}
 					type='radio'
+					defaultChecked={btnProps.checked}
 				/>
 
 				<ButtonTextRounded

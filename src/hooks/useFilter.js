@@ -23,7 +23,7 @@ const useFilter = (fromArr) => {
 				return result;
 			})
 		);
-	}, [allFilters]);
+	}, [fromArr, allFilters]);
 
 	const filter = (queryObj) => {
 		setAllFilters({ ...allFilters, ...queryObj });

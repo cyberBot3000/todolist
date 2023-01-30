@@ -6,7 +6,7 @@ import TodoActions from '../TodoActions/TodoActions';
 import InputTextLight from '../UI/inputs/InputTextLight';
 import './Todo.css';
 
-const Todo = ({ todoObj, removeTodo, setTodoValue, makeDone }) => {
+const Todo = ({ todoObj, removeTodo, setTodoValue, toggleDone }) => {
 	const { isEditting, editElemRef, editBtnClickHandler } = useInputEdittor(
 		todoObj.value,
 		() => {
@@ -33,9 +33,10 @@ const Todo = ({ todoObj, removeTodo, setTodoValue, makeDone }) => {
 					</div>
 				)}
 				<TodoActions
+					todoId={todoObj.id}
 					isEditting={isEditting}
 					editBtnClickHandler={editBtnClickHandler}
-					makeDone={makeDone}
+					toggleDone={toggleDone}
 					removeTodo={removeTodo}
 				/>
 			</main>

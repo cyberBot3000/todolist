@@ -44,13 +44,13 @@ const useTodos = () => {
 		);
 	};
 
-	const makeDone = (id) => {
+	const toggleDone = (id) => {
 		setTodos(
 			todos.map((elem) => {
 				if (elem.id !== id) {
 					return elem;
 				}
-				return { ...elem, done: true };
+				return { ...elem, done: !elem.done };
 			})
 		);
 	};
@@ -59,7 +59,7 @@ const useTodos = () => {
 		addTodo,
 		removeTodo,
 		setTodoValue,
-		makeDone,
+		toggleDone,
 	};
 };
 export default useTodos;

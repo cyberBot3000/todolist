@@ -11,7 +11,7 @@ import ButtonIcon from '../UI/buttons/ButtonIcon';
 const TodoActions = ({
 	todoId,
 	removeTodo,
-	makeDone,
+	toggleDone,
 	isEditting,
 	editBtnClickHandler,
 }) => (
@@ -36,7 +36,7 @@ const TodoActions = ({
 			className='todo__action-button'
 			color='purple'
 			onClick={() => {
-				makeDone(todoId);
+				toggleDone(todoId);
 			}}
 		>
 			<FontAwesomeIcon icon={faMinus} />
