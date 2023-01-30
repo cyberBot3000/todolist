@@ -1,5 +1,7 @@
+import { debounce } from 'lodash';
+
 const useSearch = (filterFn) => {
-	const search = (by, from) => {
+	const search = debounce((by, from) => {
 		filterFn({
 			[by]: (val) =>
 				val
@@ -7,7 +9,7 @@ const useSearch = (filterFn) => {
 					.toUpperCase()
 					.includes(from.toString().toUpperCase()),
 		});
-	};
+	}, 500);
 	return search;
 };
 

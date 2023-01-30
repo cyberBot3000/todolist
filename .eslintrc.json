@@ -20,6 +20,7 @@
     "rules": {
         "prettier/prettier": ["error", { "endOfLine":"auto" }],
         "arrow-parens": "off",
+        "import/no-unresolved": "off",
         "no-console": "error",
         "comma-dangle": "off",
         "indent": "off",
