@@ -11,6 +11,7 @@ addLocale('en', 'simple', {
 	new_todo: 'add todo',
 	search: 'search',
 	language: 'language',
+	no_todos_in_cat: 'you have no todos in this category',
 });
 addLocale('en', 'plurals', {
 	todo: {

@@ -11,6 +11,7 @@ addLocale('ru', 'simple', {
 	new_todo: 'добавить дело',
 	search: 'поиск',
 	language: 'язык',
+	no_todos_in_cat: 'В выбранной категории нет дел',
 });
 addLocale('ru', 'plurals', {
 	todo: {
