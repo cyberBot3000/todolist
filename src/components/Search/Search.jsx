@@ -1,7 +1,9 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Context from '../../context/Context';
 import useSearch from '../../hooks/useSearch';
+import { getSimpleLocales } from '../../lib/locales';
 import InputTextUnderlined from '../UI/inputs/InputTextUnderlined';
 import './Search.css';
 
@@ -11,6 +13,7 @@ const Search = ({ className, filterFn, inArr }) => {
 	useEffect(() => {
 		search('value', inputVal);
 	}, [inArr, inputVal]);
+	const { language } = useContext(Context);
 	return (
 		<div className={`search ${className}`}>
 			<div className='search__search-icon'>
@@ -22,7 +25,7 @@ const Search = ({ className, filterFn, inArr }) => {
 					setInputVal(e.target.value);
 				}}
 				outlineColor='rbga(0, 0, 0, .5)'
-				placeholder='Поиск'
+				placeholder={getSimpleLocales('search', language)}
 				value={inputVal}
 			/>
 		</div>

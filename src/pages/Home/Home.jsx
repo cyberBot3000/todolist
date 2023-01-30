@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import AddTodo from '../../components/AddTodo/AddTodo';
 import FiltersTodo from '../../components/FiltersTodo/FiltersTodo';
 import Container from '../../components/layouts/Container/Container';
 import Search from '../../components/Search/Search';
 import TodosList from '../../components/TodosList/TodosList';
+import Context from '../../context/Context';
 import useFilter from '../../hooks/useFilter';
 import useTodos from '../../hooks/useTodos';
+import { getPluralLocales, getSimpleLocales } from '../../lib/locales';
 import './Home.css';
 
 const Home = () => {
 	const { todosList, addTodo, makeDone, removeTodo, setTodoValue } =
 		useTodos();
 	const { resultArr, filter } = useFilter(todosList.todos);
-
+	const { language } = useContext(Context);
 	return (
 		<div className='home'>
 			<Container>
 				<div className='home__heading'>
-					<h1>Todo List</h1>
+					<h1>{getSimpleLocales('label', language)}</h1>
 					<div className='home__general-info'>
-						{`${todosList.totalCount} todos, ${todosList.doneCount} done`}
+						{`${todosList.totalCount} ${getPluralLocales(
+							'todo',
+							todosList.totalCount,
+							language
+						)}, ${todosList.doneCount} ${getSimpleLocales(
+							'done',
+							language
+						)}`}
 					</div>
 				</div>
 				<div className='home__todos-select'>

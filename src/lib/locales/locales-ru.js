@@ -3,8 +3,24 @@ import { addLocale } from './locales';
 addLocale('ru', 'simple', {
 	times_ago: 'назад',
 	this_moment: 'только что',
+	label: 'Список Дел',
+	filter_button_all: 'все',
+	filter_button_active: 'активные',
+	filter_button_done: 'завершенные',
+	done: 'сделано',
+	new_todo: 'добавить дело',
+	search: 'поиск',
+	language: 'язык',
 });
 addLocale('ru', 'plurals', {
+	todo: {
+		zero: 'дел',
+		one: 'дело',
+		two: 'дела',
+		few: 'дела',
+		many: 'дел',
+		other: 'дел',
+	},
 	hour: {
 		zero: 'часов',
 		one: 'час',

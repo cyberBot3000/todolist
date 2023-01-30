@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../../context/Context';
+import { getSimpleLocales } from '../../lib/locales';
 import RadioButtonsGroup from '../UI/radioGroups/RadioButtonsGroup';
 import './FiltersTodo.css';
 
 const FiltersTodo = ({ filter }) => {
+	const { language } = useContext(Context);
 	const byDoneBtns = [
 		{
 			id: 'todo-filters-radio-btn_1',
-			children: 'all',
+			children: getSimpleLocales('filter_button_all', language),
 			onClick: () => {
 				filter({ done: () => true });
 			},
 		},
 		{
-			children: 'active',
+			children: getSimpleLocales('filter_button_active', language),
 			id: 'todo-filters-radio-btn_2',
 			onClick: () => {
 				filter({ done: (done) => !done });
 			},
 		},
 		{
-			children: 'done',
+			children: getSimpleLocales('filter_button_done', language),
 			id: 'todo-filters-radio-btn_3',
 			onClick: () => {
 				filter({ done: (done) => done });

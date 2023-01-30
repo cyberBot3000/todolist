@@ -1,3 +1,6 @@
+:root{
+    --font-headings: Arial;
+}
 *{
     margin: 0;
     padding: 0;

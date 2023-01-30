@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LifeTime from '../../features/LifeTime';
 import useInputEdittor from '../../hooks/useInputEdittor';
+import Context from '../../context/Context';
 import TodoActions from '../TodoActions/TodoActions';
 import InputTextLight from '../UI/inputs/InputTextLight';
 import './Todo.css';
@@ -12,6 +13,7 @@ const Todo = ({ todoObj, removeTodo, setTodoValue, makeDone }) => {
 			setTodoValue(todoObj.id, editElemRef.current.value);
 		}
 	);
+	const { language } = useContext(Context);
 
 	return (
 		<div className='todo'>
@@ -41,6 +43,7 @@ const Todo = ({ todoObj, removeTodo, setTodoValue, makeDone }) => {
 				<LifeTime
 					className='todo__text todo__text_sub'
 					createdAt={todoObj.createdAt}
+					locale={language}
 				/>
 			</footer>
 		</div>

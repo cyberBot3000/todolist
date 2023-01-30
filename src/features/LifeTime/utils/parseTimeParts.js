@@ -1,16 +1,15 @@
-import { getSimpleLocales } from '../../../lib/locales';
-import getTimePartName from './getTimePartName';
+import { getPluralLocales, getSimpleLocales } from '../../../lib/locales';
 
 const parseTimeParts = (timeParts, locale = 'ru') => {
 	const timeAgo = getSimpleLocales('times_ago', locale);
 	if (timeParts.years) {
-		const yearsStr = `${timeParts.years} ${getTimePartName(
+		const yearsStr = `${timeParts.years} ${getPluralLocales(
 			'year',
 			timeParts.years,
 			locale
 		)}`;
 		const monthsStr = timeParts.months
-			? `${timeParts.months} ${getTimePartName(
+			? `${timeParts.months} ${getPluralLocales(
 					'month',
 					timeParts.months,
 					locale
@@ -19,21 +18,21 @@ const parseTimeParts = (timeParts, locale = 'ru') => {
 		return `${yearsStr} ${monthsStr} ${timeAgo}`;
 	}
 	if (timeParts.months) {
-		return `${timeParts.months} ${getTimePartName(
+		return `${timeParts.months} ${getPluralLocales(
 			'month',
 			timeParts.months,
 			locale
 		)} ${timeAgo}`;
 	}
 	if (timeParts.days) {
-		return `${timeParts.days} ${getTimePartName(
+		return `${timeParts.days} ${getPluralLocales(
 			'day',
 			timeParts.days,
 			locale
 		)} ${timeAgo}`;
 	}
 	if (timeParts.hours) {
-		return `${timeParts.hours} ${getTimePartName(
+		return `${timeParts.hours} ${getPluralLocales(
 			'hour',
 			timeParts.hours,
 			locale
@@ -42,13 +41,13 @@ const parseTimeParts = (timeParts, locale = 'ru') => {
 	if (timeParts.minutes) {
 		if (timeParts.minutes > 10) {
 			const minutesVal = Math.trunc(timeParts.minutes / 10) * 10;
-			return `${minutesVal} ${getTimePartName(
+			return `${minutesVal} ${getPluralLocales(
 				'minute',
 				minutesVal,
 				locale
 			)} ${timeAgo}`;
 		}
-		return `${timeParts.minutes} ${getTimePartName(
+		return `${timeParts.minutes} ${getPluralLocales(
 			'minute',
 			timeParts.minutes,
 			locale
